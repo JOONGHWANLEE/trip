@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.trip.dao.TripDao">
+	<select id="maxNum" resultType="int">
+		select nvl(max(num), 0) from trip
+	</select>
+	
+	<insert id="insertData" parameterType="Trip">
+		insert into trip values(#{num}, #{name}, #{address}, #{subject}, #{content}, 0, sysdate)
+	</insert>
+	
+	<select id="getDataCount" parameterType="map" resultType="int">
+		select nvl(count(*), 0) from trip where ${searchKey} like '%' || #{searchValue} || '%'
+	</select>
+	
+	<select id="getLists" parameterType="map" resultType="Trip">
+		select * from (
+    		select rownum rnum, data.* from (
+        		select num, name, subject, hitCount, to_char(created, 'YYYY-MM-DD') created
+        		from trip
+        		where ${searchKey} like '%' || #{searchValue} || '%'
+        		order by num desc
+    		) data
+		)
+		<![CDATA[
+		where rnum >= #{start} and rnum <= #{end}
+		]]>
+	</select>
+	
+	<update id="updateHitCount" parameterType="int">
+		update trip set hitCount = hitCount + 1 where num = #{num}
+	</update>
+	
+	<select id="getReadData" parameterType="int" resultType="Trip">
+		select * from trip where num = #{num}
+	</select>
+	
+	<update id="updateData" parameterType="Trip">
+		update trip set name=#{name}, subject=#{subject}, content=#{content} where num = #{num}
+	</update>
+	
+	<delete id="deleteData" parameterType="int">
+		delete trip where num = #{num}
+	</delete>
+</mapper>
