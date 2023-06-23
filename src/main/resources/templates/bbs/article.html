@@ -38,11 +38,9 @@
 				<tr>
 					<td style="padding-left: 20px 80px 20px 62px;" valign="top"
 						height="200">
-						<c:if test="${dto.photo!='no' }">
-							<img alt="" src="../static/img/${dto.img}" width="400" height="300">
+							<img th:src="@{${trip.img}}" width="400" height="300">
 							<br>
 							<br>
-						</c:if>
 						<p rows="12" cols="82" name="content" style="border: none" class="boxTA" th:text="${trip.content}"></p>
 						
 					</td>

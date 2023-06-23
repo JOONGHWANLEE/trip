@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 #bbsList {
-	width:690px;
+	width:800px;
 	margin:0 auto;
 	text-align:left;
 }
@@ -52,6 +52,53 @@
 
 #bbsList_list {
 	clear:both;
+	width: 900px;
+	display: flex;
+}
+
+#list_table{
+	display: flex;
+}
+
+#lists{
+	
+}
+
+#lists_box{
+	width: 400px;
+	height: 300px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-right: 15px;
+}
+
+.card_box{
+	margin: 15px;
+	padding: 15px;
+}
+
+#card_img{
+	width: 400px;
+	height: 225px;
+	border-radius: 10px 10px 0 0;
+	background-size: cover !important;
+	background: no-repeat;
+	background-position: center;
+}
+
+.card{
+	
+}
+
+
+
+
+#row_box {
+	width: 400px;
+	height: 300px;
+	border: 1px solid gray;
+	border-radius: 10px;
 }
 
 #bbsList_list dd,#bbsList_list td {
@@ -68,16 +115,30 @@
 	background-color: #E6E4E6;
 }
 
+#lists > tr{
+	margin: 0 auto;
+	display: flex;
+}
+
 #bbsList_list #title dl,#bbsList_list #title tr {
 	height:27px;
 	border-left:0px solid #5db062;
 	border-right:0px solid #5db062;
+	
 }
 
 #bbsList_list #title dt,#bbsList_list #title th {
 	float:left;
 	line-height:34px;
 	text-align:center;
+}
+
+.card-text{
+	margin-left: 10px;
+}
+
+.text-body-secondary{
+	margin-left: 10px;
 }
 
 #bbsList_list .num {width:50px;}
@@ -93,6 +154,7 @@
 #bbsList_list #lists dl, #bbsList_list #lists tr {
 	float:left;
 	border-bottom:1px solid #E4E4E4;
+	
 }
 #bbsList_list #lists tr:last-child {
 	float: none;
@@ -114,6 +176,7 @@
 	margin-top:5px;
 	text-align:center;
 	float: none;
+	
 }
 
 .bd-placeholder-img {

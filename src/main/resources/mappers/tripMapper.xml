@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertData" parameterType="Trip">
-		insert into trip values(#{num}, #{name}, #{address}, #{subject}, #{content}, 0, sysdate)
+		insert into trip values(#{num}, #{name}, #{address}, #{subject}, #{content}, 0, sysdate, #{img})
 	</insert>
 	
 	<select id="getDataCount" parameterType="map" resultType="int">
@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getLists" parameterType="map" resultType="Trip">
 		select * from (
     		select rownum rnum, data.* from (
-        		select num, name, subject, hitCount, to_char(created, 'YYYY-MM-DD') created
+        		select num, name, subject, hitCount, to_char(created, 'YYYY-MM-DD') created ,img 
         		from trip
         		where ${searchKey} like '%' || #{searchValue} || '%'
         		order by num desc
