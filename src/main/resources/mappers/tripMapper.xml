@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="updateData" parameterType="Trip">
-		update trip set name=#{name}, subject=#{subject}, content=#{content} where num = #{num}
+		update trip set name=#{name}, subject=#{subject}, address=#{address}, content=#{content} where num = #{num}
 	</update>
 	
 	<delete id="deleteData" parameterType="int">

@@ -28,8 +28,9 @@
 
 	<div id="bbsList_list">
 		<table id="list_table">
-			<tbody id="lists">
-				<div id="lists_box" th:if="${#lists.size(lists)} > 0" th:each="trip:${lists}">
+			<thead id="list_head">
+				<div id="lists_box" th:if="${#lists.size(lists)} > 0"
+					th:each="trip:${lists}">
 					<a class="card_box" th:href="|@{${articleUrl}}&num=@{${trip.num}}|">
 						<div id="row_box">
 							<div class="">
@@ -39,7 +40,8 @@
 										<p class="card-text" th:text="${trip.subject}"></p>
 										<div class="d-flex justify-content-between align-items-center">
 											<small class="text-body-secondary" th:text="${trip.created}"></small>
-											<small class="text-body-secondary" style="text-align: right;" th:text="${trip.name}"></small>
+											<small class="text-body-secondary" style="text-align: right;"
+												th:text="${trip.name}"></small>
 										</div>
 									</div>
 								</div>
@@ -47,17 +49,17 @@
 						</div>
 					</a>
 				</div>
-
-				<tr th:if="${#lists.size(dataCount)} > 0">
-					<td colspan="5" id="footer"><a th:utext="${pageIndexList}"></a>
-					</td>
-				</tr>
-
-				<tr th:if="${#lists.size(dataCount)} < 0">
-					<td colspan="5">등록된 게시물이 없습니다.</td>
-				</tr>
-			</tbody>
+			</thead>
 		</table>
+	</div>
+	<div id="lists_count">
+		<tr th:if="${#lists.size(dataCount)} > 0">
+			<td colspan="5" id="footer"><a th:utext="${pageIndexList}"></a>
+			</td>
+		</tr>
+		<tr th:if="${#lists.size(dataCount)} < 0">
+			<td colspan="5">등록된 게시물이 없습니다.</td>
+		</tr>
 	</div>
 </div>
 <th:block layout:fragment="script">

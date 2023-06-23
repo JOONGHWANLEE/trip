@@ -87,7 +87,7 @@ public class TripController {
 				int dataCount = tripService.getDataCount(searchKey, searchValue);
 				
 				//2. 페이징 처리를 한다(준비 단계)
-				int numPerPage = 2; //페이지당 보여줄 데이터의 갯수
+				int numPerPage = 3; //페이지당 보여줄 데이터의 갯수
 				int totalPage = myUtil.getPageCount(numPerPage, dataCount); //페이지의 전체 갯수를 구한다
 				
 				if(currentPage > totalPage) currentPage = totalPage; //totalPage보다 크면 안된다
